@@ -19,10 +19,12 @@ export type Project = {
     body: string;
     points?: string[];
     visualLabel: string;
+    visualSrc?: string;
     hideVisual?: boolean;
-    variant?: "default" | "hmw";
+    variant?: "default" | "hmw" | "direction-map" | "impact";
     full?: boolean;
     flip?: boolean;
+    compactVisual?: boolean;
     dark?: boolean;
   }[];
   story: {
@@ -71,8 +73,9 @@ export const projects: Project[] = [
         eyebrow: "Overview",
         title: "Designing a connected coffee experience.",
         body:
-          "xBloom El Cap brings espresso brewing, personalization, and community into one connected mobile experience. The app needed to support a new generation of workflows while keeping the product approachable for everyday coffee drinkers.",
+          "Building on its existing Studio and Original pour-over coffee machines, xBloom introduced El Cap, a new espresso machine with an intelligent display screen and a dedicated mobile app. The project focused on shaping a connected experience across machine and phone, supporting espresso brewing, personalization, and community while keeping the product approachable for everyday coffee drinkers.",
         visualLabel: "Machine, phone, and coffee hero",
+        hideVisual: true,
         full: true,
       },
       {
@@ -82,6 +85,7 @@ export const projects: Project[] = [
         body:
           "xBloom's original app was built for a precision pour-over coffee machine. With the launch of El Cap, users could now brew espresso, customize extraction parameters, and share recipes with others. The existing experience no longer supported these new workflows.",
         visualLabel: "Workflow gap and product transition",
+        compactVisual: true,
         dark: true,
       },
       {
@@ -89,16 +93,7 @@ export const projects: Project[] = [
         eyebrow: "Research",
         title: "Understanding users and learning from industry leaders.",
         body:
-          "Before exploring solutions, we wanted to understand how people actually make coffee at home and how advanced brewing experiences are designed. Research helped identify where users needed speed, where they wanted guidance, and where deeper control became valuable. We also analyzed products like Decent Espresso and Meticulous to understand how to keep professional brewing capability without making the learning curve feel intimidating.",
-        visualLabel: "Research synthesis",
-        hideVisual: true,
-      },
-      {
-        id: "journey",
-        eyebrow: "Journey",
-        title: "From discovery to daily brewing.",
-        body:
-          "We mapped the complete brewing journey to identify where users needed the most support, from finding inspiration to saving and sharing recipes.",
+          "Before exploring solutions, we wanted to understand how people actually make coffee at home and how advanced brewing experiences are designed. Research helped identify where users needed speed, where they wanted guidance, and where deeper control became valuable. We also mapped the brewing journey from discovery to daily use, clarifying how people find inspiration, choose recipes, customize settings, brew, save favorites, and share with the community.",
         points: [
           "Discover: find inspiration through recipes and community.",
           "Choose: pick a drink with clear recipe information.",
@@ -107,8 +102,8 @@ export const projects: Project[] = [
           "Save: keep favorites in a personal recipe library.",
           "Share: inspire others through community recipes.",
         ],
-        visualLabel: "Horizontal brewing journey",
-        full: true,
+        visualLabel: "Research synthesis",
+        hideVisual: true,
       },
       {
         id: "hmw",
@@ -228,7 +223,7 @@ export const projects: Project[] = [
   {
     slug: "k12-education-platform",
     title: "K12 Education Platform",
-    eyebrow: "Project 02",
+    eyebrow: "Project 03",
     year: "2025",
     category: "Marketing, Responsive Web, Growth",
     summary:
@@ -290,22 +285,119 @@ export const projects: Project[] = [
   {
     slug: "zilliz-cloud",
     title: "Zilliz Cloud",
-    eyebrow: "Project 03",
+    eyebrow: "Project 02",
     year: "2025",
     category: "Enterprise SaaS, Developer Experience",
     summary:
-      "Rethinking collection creation for a vector database workflow through progressive disclosure and better mental-model alignment.",
-    cover: "/work/zilliz-flow.png",
+      "Reducing complexity in database collection creation for developers moving from open-source workflows into Zilliz Cloud.",
+    cover: "/work/zilliz-hero.png",
     heroTone: "from-neutral-100 to-white",
     role: "Product Designer",
-    timeline: "10 weeks",
-    team: "PM, engineering, developer advocacy",
-    platform: "Cloud dashboard",
+    timeline: "4 weeks",
+    team: "1 PM, 2 Designers, 2 Developers",
+    platform: "",
     responsibilities: [
       "Enterprise UX",
       "Workflow mapping",
       "Interaction design",
       "Before/after validation",
+    ],
+    caseSections: [
+      {
+        id: "overview",
+        eyebrow: "Overview",
+        title: "Designing a clearer onboarding path for vector database setup.",
+        body:
+          "Zilliz is a B2B company focused on vector database infrastructure, offering both open-source products and the commercial cloud product Zilliz Cloud. Many users enter Zilliz Cloud as developers and engineers migrating from open-source workflows, making collection creation one of the most important first experiences in the product.",
+        visualLabel: "Zilliz Cloud create collection outcome",
+        hideVisual: true,
+        full: true,
+      },
+      {
+        id: "challenge",
+        eyebrow: "Challenge",
+        title: "A core entry point with a high technical threshold.",
+        body:
+          "Creating a database collection required users to understand multiple technical concepts at once, including schema, index, partition, and optimization settings. In the previous flow, configuration items were complex and scattered, which increased cognitive load and made it easier for users to feel uncertain or make mistakes before they could successfully create a collection.",
+        visualLabel: "Before create collection",
+        visualSrc: "/work/zilliz-before.png",
+        compactVisual: true,
+      },
+      {
+        id: "research",
+        eyebrow: "Research Insights",
+        title: "The problem was not capability. It was how the capability was introduced.",
+        body:
+          "Research showed that users needed access to powerful configuration options, but they did not need every decision exposed with the same weight at the same moment. The key opportunity was to help users understand the system state faster while lowering the learning curve for first-time cloud setup.",
+        points: [
+          "Developers migrating from open-source workflows already understood the domain, but needed clearer cloud-specific guidance.",
+          "Schema and optimization decisions created the highest cognitive load because they combined several technical concepts in one surface.",
+          "Advanced settings were valuable, but they needed defaults, grouping, and contextual explanation.",
+        ],
+        visualLabel: "Before and research synthesis",
+        hideVisual: true,
+      },
+      {
+        id: "direction",
+        eyebrow: "Design Direction",
+        title: "Two directions shaped the redesign.",
+        body:
+          "The design moved away from a flat configuration page and toward a clearer structure based on user tasks. The first direction grouped information by task, so users could understand basic information, schema setup, and optimization settings as separate decisions. The second direction introduced progressive guidance, allowing users to complete the minimum setup first and expand into advanced settings with recommended defaults and contextual help.",
+        points: [
+          "Group configuration by task: basic information, schema definition, performance and index settings, and data partitioning.",
+          "Guide progressively: start with MVP setup, then reveal advanced settings when they become useful.",
+        ],
+        visualLabel: "Design directions",
+        variant: "direction-map",
+        full: true,
+        dark: true,
+      },
+      {
+        id: "flow",
+        eyebrow: "Final Flow",
+        title: "Step 1: start with the minimum setup.",
+        body:
+          "The redesign begins by asking users to complete only the information required to create a collection. Basic collection details are separated from schema and optimization decisions, so users can enter the flow without immediately facing every advanced database concept.",
+        points: [
+          "Enter basic collection information first.",
+          "Keep advanced setup collapsed until it becomes relevant.",
+          "Let users progress before asking them to make deeper technical choices.",
+        ],
+        visualLabel: "Create collection first step",
+        visualSrc: "/work/zilliz-create-collection-step1.png",
+        full: true,
+      },
+      {
+        id: "schema",
+        eyebrow: "Create Schema",
+        title: "Making technical structure easier to scan and edit.",
+        body:
+          "The schema experience was redesigned around a clearer two-column structure for field names and field types. Advanced controls were moved into setting icons, reducing visual noise while keeping detailed configuration available. Dynamic field and add-field actions were made more visible so users could understand the structure of a collection without reading a dense table.",
+        visualLabel: "Create schema interface",
+        visualSrc: "/work/zilliz-create-collection.png",
+        full: true,
+      },
+      {
+        id: "optimization",
+        eyebrow: "Optimization Settings",
+        title: "Using defaults and explanations to reduce setup anxiety.",
+        body:
+          "Optimization settings were treated as a guided advanced layer instead of a required wall of configuration. Recommended defaults, grouped controls, and inline explanations helped users understand index, partition, mmap, shard, and consistency choices without forcing them to configure everything manually on first use.",
+        visualLabel: "Optimization settings",
+        visualSrc: "/work/zilliz-optimize.png",
+        full: true,
+      },
+      {
+        id: "impact",
+        eyebrow: "Impact",
+        title: "The redesigned flow improved completion after launch.",
+        body:
+          "After the redesign was completed in early 2025, the Create Collection flow reached a 44% completion rate. The result reflected a clearer path through a technically complex setup, helping users move from basic information to schema creation and optimization settings with less friction.",
+        visualLabel: "Impact metric",
+        hideVisual: true,
+        variant: "impact",
+        full: true,
+      },
     ],
     story: {
       overview:

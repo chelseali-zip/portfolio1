@@ -9,7 +9,15 @@ import { ArrowDown, ArrowUpRight, Mail } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const rotatingTitles = ["Product Designer", "Visual Designer", "Design Engineer"];
+const rotatingTitles = ["Product Designer", "Visual Designer", "UX Designer"];
+const homeProjects = [
+  "smart-coffee-ecosystem",
+  "zilliz-cloud",
+  "k12-education-platform",
+  "coming-soon",
+]
+  .map((slug) => projects.find((project) => project.slug === slug))
+  .filter((project): project is (typeof projects)[number] => Boolean(project));
 
 function RotatingHeroTitle() {
   const [titleIndex, setTitleIndex] = useState(0);
@@ -81,8 +89,8 @@ export default function Home() {
             className="max-w-3xl"
           >
             <p className="text-xl leading-9 text-muted md:text-2xl md:leading-10">
-              Product Designer specializing in UX, Interaction Design, Design Systems, and
-              AI-powered experiences.
+              Hanyi Li is a product designer specializing in UX, visual design, branding, and
+              thoughtful digital experiences.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
@@ -107,7 +115,7 @@ export default function Home() {
 
       <section id="work" className="px-8 py-16 sm:px-10 md:py-24 lg:px-16 xl:px-24">
         <div className="mx-auto max-w-[1440px]">
-          {projects.map((project, index) => (
+          {homeProjects.map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}
         </div>
@@ -115,10 +123,7 @@ export default function Home() {
 
       <section id="about" className="px-8 py-24 sm:px-10 md:py-32 lg:px-16 xl:px-24">
         <div className="mx-auto grid max-w-[1440px] gap-16 md:grid-cols-12">
-          <motion.div {...fadeUp} className="md:col-span-5">
-            <Visual label="Portrait，Studio Image" aspect="tall" />
-          </motion.div>
-          <motion.div {...fadeUp} className="md:col-span-6 md:col-start-7">
+          <motion.div {...fadeUp} className="md:col-span-8">
             <p className="mb-6 text-xs font-semibold uppercase tracking-[.24em] text-blue">About</p>
             <h2 className="text-balance text-5xl font-semibold leading-[.96] tracking-[-.04em] md:text-7xl">
               A designer for ambitious products and humane systems.
@@ -135,12 +140,12 @@ export default function Home() {
                 ["Experience", "Consumer apps, enterprise SaaS, connected hardware, AI workflows"],
                 [
                   "Skills",
-                  "Branding, Marketing Design, UX and Analysis, UI Design，Usability Testing，Responsive Design Solutions",
+                  "Branding, Marketing Design, UX and Analysis, UI Design, Usability Testing, Responsive Design Solutions",
                 ],
-                ["Tools", "Figma，Adobe Creative Suites，Codex，Claude"],
+                ["Tools", "Figma, Adobe Creative Suites, Codex, Claude"],
                 [
                   "Education",
-                  "Pratt Institute, BFA Graphic Design，University of Michigan, MS Information Science",
+                  "Pratt Institute, BFA Graphic Design, University of Michigan, MS Information Science",
                 ],
               ].map(([title, body]) => (
                 <div key={title}>
@@ -168,7 +173,7 @@ export default function Home() {
               <a className="group flex items-center justify-between border-t border-line py-4 transition-colors hover:text-muted" href="mailto:lihanyi1044@gmail.com">
                 Email <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
-              <a className="group flex items-center justify-between border-t border-line py-4 transition-colors hover:text-muted" href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+              <a className="group flex items-center justify-between border-t border-line py-4 transition-colors hover:text-muted" href="https://www.linkedin.com/in/chelsea-hanyi-li-b5483528a/" target="_blank" rel="noreferrer">
                 LinkedIn <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
               <a className="group flex items-center justify-between border-y border-line py-4 transition-colors hover:text-muted" href="mailto:lihanyi1044@gmail.com?subject=Resume%20request">

@@ -40,10 +40,6 @@ export function Visual({ src, label, aspect = "wide", dark = false }: VisualProp
           </div>
         </div>
       )}
-      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between border-t border-current/15 pt-3 text-xs font-medium uppercase tracking-[.16em]">
-        <span>{label}</span>
-        <span>Placeholder</span>
-      </div>
     </div>
   );
 }

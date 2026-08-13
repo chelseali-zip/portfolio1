@@ -127,7 +127,9 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
                 ["Team", project.team],
                 ["Platform", project.platform],
                 ["Responsibilities", responsibilities],
-              ].map(([label, value]) => (
+              ]
+                .filter(([, value]) => value)
+                .map(([label, value]) => (
                 <div key={label} className="grid grid-cols-[120px_1fr] gap-4 border-b border-line pb-5">
                   <dt className="text-muted">{label}</dt>
                   <dd className="font-medium">{value}</dd>
