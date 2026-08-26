@@ -14,7 +14,6 @@ const homeProjects = [
   "smart-coffee-ecosystem",
   "zilliz-cloud",
   "k12-education-platform",
-  "coming-soon",
 ]
   .map((slug) => projects.find((project) => project.slug === slug))
   .filter((project): project is (typeof projects)[number] => Boolean(project));
@@ -73,7 +72,7 @@ function RotatingHeroTitle() {
 export default function Home() {
   return (
     <main id="home" className="bg-paper text-ink">
-      <section className="editorial-grid px-8 pb-16 pt-24 sm:px-10 md:pb-20 md:pt-28 lg:px-16 lg:pb-24 xl:px-24">
+      <section className="editorial-grid px-8 pb-8 pt-24 sm:px-10 md:pb-20 md:pt-28 lg:px-24 lg:pb-24 xl:px-36 2xl:px-48">
         <div className="mx-auto grid max-w-[1440px] gap-10">
           <motion.div {...stagger}>
             <motion.p
@@ -108,12 +107,12 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-        <div className="mx-auto mt-14 flex max-w-[1440px] items-end justify-start text-xs uppercase tracking-[.18em] text-muted md:mt-16">
-          <span className="hidden md:block">Scroll</span>
+        <div className="mx-auto hidden max-w-[1440px] items-end justify-start text-xs uppercase tracking-[.18em] text-muted md:mt-16 md:flex">
+          <span>Scroll</span>
         </div>
       </section>
 
-      <section id="work" className="px-8 py-16 sm:px-10 md:py-24 lg:px-16 xl:px-24">
+      <section id="work" className="px-8 pb-16 pt-8 sm:px-10 md:py-24 lg:px-24 xl:px-36 2xl:px-48">
         <div className="mx-auto max-w-[1440px]">
           {homeProjects.map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
@@ -121,9 +120,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="px-8 py-24 sm:px-10 md:py-32 lg:px-16 xl:px-24">
-        <div className="mx-auto grid max-w-[1440px] gap-16 md:grid-cols-12">
-          <motion.div {...fadeUp} className="md:col-span-8">
+      <section id="about" className="px-8 py-24 sm:px-10 md:py-32 lg:px-24 xl:px-36 2xl:px-48">
+        <div className="mx-auto grid max-w-[1440px] gap-16 md:grid-cols-12 md:items-start">
+          <motion.div {...fadeUp} className="md:col-span-7 lg:col-span-8">
             <p className="mb-6 text-xs font-semibold uppercase tracking-[.24em] text-blue">About</p>
             <h2 className="text-balance text-5xl font-semibold leading-[.96] tracking-[-.04em] md:text-7xl">
               A designer for ambitious products and humane systems.
@@ -137,7 +136,7 @@ export default function Home() {
             </p>
             <div className="mt-12 grid gap-8 border-t border-line pt-8 md:grid-cols-2">
               {[
-                ["Experience", "Consumer apps, enterprise SaaS, connected hardware, AI workflows"],
+                ["Experience", "Consumer apps, enterprise SaaS, design systems, website, AI workflows"],
                 [
                   "Skills",
                   "Branding, Marketing Design, UX and Analysis, UI Design, Usability Testing, Responsive Design Solutions",
@@ -155,10 +154,20 @@ export default function Home() {
               ))}
             </div>
           </motion.div>
+          <motion.div
+            {...fadeUp}
+            className="md:col-span-5 lg:col-span-4 md:sticky md:top-28"
+          >
+            <img
+              src="/work/about-hanyi.jpg"
+              alt="Portrait of Hanyi Li"
+              className="h-auto w-full rounded-[28px] object-cover shadow-xl"
+            />
+          </motion.div>
         </div>
       </section>
 
-      <section id="contact" className="border-t border-line px-8 py-24 sm:px-10 md:py-32 lg:px-16 xl:px-24">
+      <section id="contact" className="border-t border-line px-8 py-24 sm:px-10 md:py-32 lg:px-24 xl:px-36 2xl:px-48">
         <div className="mx-auto grid max-w-[1440px] gap-12 md:grid-cols-12">
           <motion.div {...fadeUp} className="md:col-span-8">
             <p className="mb-6 text-xs font-semibold uppercase tracking-[.24em] text-blue">
@@ -184,8 +193,8 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="flex flex-col justify-between gap-5 px-8 py-8 text-sm text-muted sm:px-10 md:flex-row lg:px-16 xl:px-24">
-        <span>© 2026 HY Product Design Portfolio</span>
+      <footer className="flex flex-col justify-between gap-5 px-8 py-8 text-sm text-muted sm:px-10 md:flex-row lg:px-24 xl:px-36 2xl:px-48">
+        <span>© 2026 HY Product Design Portfolio. This site is best viewed in desktop.</span>
         <Link href="#home" className="font-medium text-ink">
           Back to top
         </Link>

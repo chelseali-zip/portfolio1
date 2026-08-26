@@ -102,37 +102,36 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
   return (
     <main className="bg-paper pt-16 text-ink">
-      <section className="px-8 pb-16 pt-4 sm:px-12 md:pb-20 lg:px-24 xl:px-36 2xl:px-48">
+      <section className="px-8 pb-14 pt-4 sm:px-12 md:pb-16 lg:px-24 xl:px-36 2xl:px-48">
         <div className="mx-auto max-w-[1440px]">
           <Link
             href="/#work"
-            className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-muted transition-colors hover:text-ink"
+            className="mb-10 inline-flex items-center gap-2 text-sm font-semibold text-muted transition-colors hover:text-ink"
           >
             <ArrowLeft className="h-4 w-4" /> Back to work
           </Link>
-          <div className="mb-8">
-            <Visual src={project.cover} label="Large hero image" aspect="hero" />
-          </div>
-          <div className="grid gap-12 md:grid-cols-12">
-            <div className="md:col-span-8">
-              <h1 className="text-balance text-5xl font-semibold leading-[1.04] tracking-[-.025em] md:text-7xl">
+          <div className="grid gap-10">
+            <div className="max-w-5xl">
+              <h1 className="text-balance text-5xl font-semibold leading-[1.04] tracking-[-.025em] md:text-6xl lg:text-7xl">
                 {project.title}
               </h1>
-              <p className="mt-8 max-w-3xl text-2xl leading-10 text-muted">{project.summary}</p>
+              <p className="mt-6 max-w-4xl text-xl leading-9 text-muted md:text-2xl md:leading-10">
+                {project.summary}
+              </p>
             </div>
-            <dl className="grid gap-5 self-end border-t border-line pt-6 text-sm md:col-span-4">
+            <Visual src={project.cover} label="Large hero image" aspect="hero" />
+            <dl className="grid gap-x-10 gap-y-5 border-y border-line py-5 text-sm sm:grid-cols-2 lg:grid-cols-4">
               {[
                 ["Role", project.role],
-                ["Timeline", project.timeline],
                 ["Team", project.team],
                 ["Platform", project.platform],
                 ["Responsibilities", responsibilities],
               ]
                 .filter(([, value]) => value)
                 .map(([label, value]) => (
-                <div key={label} className="grid grid-cols-[120px_1fr] gap-4 border-b border-line pb-5">
+                <div key={label} className="min-w-0">
                   <dt className="text-muted">{label}</dt>
-                  <dd className="font-medium">{value}</dd>
+                  <dd className="mt-2 font-medium leading-6">{value}</dd>
                 </div>
               ))}
             </dl>
@@ -152,6 +151,12 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           </div>
         </div>
       </section>
+      <footer className="flex flex-col justify-between gap-5 px-8 py-8 text-sm text-muted sm:px-12 md:flex-row lg:px-24 xl:px-36 2xl:px-48">
+        <span>© 2026 HY Product Design Portfolio. This site is best viewed in desktop.</span>
+        <Link href="#" className="font-medium text-ink">
+          Back to top
+        </Link>
+      </footer>
     </main>
   );
 }
