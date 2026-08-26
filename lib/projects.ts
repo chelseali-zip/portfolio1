@@ -20,8 +20,17 @@ export type Project = {
     points?: string[];
     visualLabel: string;
     visualSrc?: string;
+    visualSrcs?: string[];
+    visualLabels?: string[];
+    visualStories?: {
+      title: string;
+      body: string;
+      points?: string[];
+    }[];
+    videoSrc?: string;
+    visualMode?: "default" | "scroll" | "home-before-after" | "alternating";
     hideVisual?: boolean;
-    variant?: "default" | "hmw" | "direction-map" | "impact";
+    variant?: "default" | "hmw" | "direction-map" | "impact" | "challenge-map" | "research-flow" | "step-flow";
     full?: boolean;
     flip?: boolean;
     compactVisual?: boolean;
@@ -54,14 +63,13 @@ export const projects: Project[] = [
     category: "Connected Coffee Experience",
     summary:
       "A connected mobile experience that brings together brewing, personalization, and community for xBloom's next-generation espresso machine.",
-    cover: "/work/coffee-mobile.png",
+    cover: "/work/xbloom/xbloom-hero.png",
     heroTone: "from-neutral-50 to-white",
     role: "Product Designer",
     timeline: "2026",
-    team: "2 Designers, 4 Engineers",
+    team: "1 PM, 2 Designers, 4 Engineers",
     platform: "Mobile App, Display Screen",
     responsibilities: [
-      "Product Strategy",
       "UX Design",
       "Interaction Design",
       "Visual Design",
@@ -73,9 +81,9 @@ export const projects: Project[] = [
         eyebrow: "Overview",
         title: "Designing a connected coffee experience.",
         body:
-          "Building on its existing Studio and Original pour-over coffee machines, xBloom introduced El Cap, a new espresso machine with an intelligent display screen and a dedicated mobile app. The project focused on shaping a connected experience across machine and phone, supporting espresso brewing, personalization, and community while keeping the product approachable for everyday coffee drinkers.",
+          "Building on its existing Studio and Original pour-over coffee machines, xBloom introduced El Cap, a new espresso machine with an intelligent display screen and a dedicated mobile app. During my internship at xBloom, I designed and shipped the app from 0 to 1, collaborating closely with cross-functional stakeholders across product, engineering, and hardware. The project focused on shaping a connected experience across machine and phone, supporting espresso brewing, personalization, and community while keeping the product approachable for everyday coffee drinkers.",
         visualLabel: "Machine, phone, and coffee hero",
-        hideVisual: true,
+        visualSrc: "/work/xbloom/overview-machine.png",
         full: true,
       },
       {
@@ -85,15 +93,14 @@ export const projects: Project[] = [
         body:
           "xBloom's original app was built for a precision pour-over coffee machine. With the launch of El Cap, users could now brew espresso, customize extraction parameters, and share recipes with others. The existing experience no longer supported these new workflows.",
         visualLabel: "Workflow gap and product transition",
-        compactVisual: true,
-        dark: true,
+        variant: "challenge-map",
       },
       {
         id: "research",
         eyebrow: "Research",
-        title: "Understanding users and learning from industry leaders.",
+        title: "Reframing the app for a new machine launch.",
         body:
-          "Before exploring solutions, we wanted to understand how people actually make coffee at home and how advanced brewing experiences are designed. Research helped identify where users needed speed, where they wanted guidance, and where deeper control became valuable. We also mapped the brewing journey from discovery to daily use, clarifying how people find inspiration, choose recipes, customize settings, brew, save favorites, and share with the community.",
+          "With the launch of El Cap, the app needed to evolve beyond its original pour-over experience. The redesign became an opportunity to rethink the full product journey, from discovering drinks and setting up recipes to brewing, saving, and sharing. Community was also a key part of this shift: the previous experience had limited engagement, so we explored how recipes, creators, and personalized discovery could strengthen retention and make users return more often.",
         points: [
           "Discover: find inspiration through recipes and community.",
           "Choose: pick a drink with clear recipe information.",
@@ -104,6 +111,7 @@ export const projects: Project[] = [
         ],
         visualLabel: "Research synthesis",
         hideVisual: true,
+        variant: "research-flow",
       },
       {
         id: "hmw",
@@ -126,8 +134,13 @@ export const projects: Project[] = [
           "Drink Menu",
           "Device Management",
           "Tutorials and updates",
+          "Schedule your drink",
+          "Save bean and brew information",
+          "Clean the machine",
         ],
         visualLabel: "Home screen, quick start, and machine status",
+        videoSrc: "/work/xbloom/home-demo.mov",
+        visualMode: "home-before-after",
         full: true,
       },
       {
@@ -143,39 +156,80 @@ export const projects: Project[] = [
           "Share creations with the community",
         ],
         visualLabel: "Brewing curve, parameter interface, and testing flow",
+        visualSrcs: [
+          "/work/xbloom/taste-lab-demo.mov",
+          "/work/xbloom/taste-lab-parameters.png",
+          "/work/xbloom/taste-lab-history.png",
+        ],
+        visualMode: "scroll",
+        full: true,
         dark: true,
+      },
+      {
+        id: "mall",
+        eyebrow: "Mall",
+        title: "Browsing and sorting help users narrow the list quickly.",
+        body:
+          "The mall gives users several simple ways to discover products, from promotions and categories to search results and sort controls. The experience keeps product browsing lightweight while supporting faster comparison.",
+        points: [
+          "Enter through promotions, categories, or product groups.",
+          "Review search results without leaving the page.",
+          "Open sorting controls in a focused bottom sheet.",
+        ],
+        visualLabel: "Mall browse and sort flow",
+        visualSrcs: [
+          "/work/xbloom/shop-demo.mov",
+          "/work/xbloom/shop-search.png",
+          "/work/xbloom/shop-sort-sheet.png",
+        ],
+        visualMode: "scroll",
+        full: true,
       },
       {
         id: "community",
         eyebrow: "Community",
         title: "Recipes before social.",
         body:
-          "Instead of building another social platform, Community is designed around recipes. The goal was to encourage coffee discovery rather than endless scrolling.",
-        points: [
-          "Discover drinks",
-          "Start brewing instantly",
-          "Save favorites",
-          "Share personal recipes",
-          "Core flow: Discover -> Brew -> Save -> Share",
-        ],
+          "Instead of building another social platform, Community is designed around recipes, creators, and taste discovery. The experience helps users find drinks they want to brew, understand the recipe, and adapt it into their own daily routine.",
         visualLabel: "Feed, recipe detail, and brew flow",
+        visualSrcs: [
+          "/work/xbloom/community-demo-2.mov",
+          "/work/xbloom/community-demo-1.mov",
+        ],
+        visualLabels: ["Discovery feed", "Drink detail"],
+        visualStories: [
+          {
+            title: "A personalized recipe feed.",
+            body:
+              "The Community feed uses a waterfall layout to recommend drinks based on user preferences, while also surfacing creators, popular recipes, and curated editorial moments from the xBloom team.",
+            points: [
+              "Recommend drinks around taste preferences and browsing behavior.",
+              "Highlight creators and community activity to make discovery feel alive.",
+              "Use operational columns and featured modules to guide seasonal exploration.",
+            ],
+          },
+          {
+            title: "Recipe details that invite interaction and remixing.",
+            body:
+              "Drink detail pages turn inspiration into action. Users can review ingredients and brew steps, interact with other coffee drinkers, and remix a community recipe into a version they can save and personalize.",
+            points: [
+              "Bring ingredients, steps, comments, and brewing actions into one flow.",
+              "Support lightweight interaction through likes, saves, comments, and sharing.",
+              "Let users remix a recipe instead of starting from scratch.",
+            ],
+          },
+        ],
+        visualMode: "alternating",
         full: true,
-      },
-      {
-        id: "connected-experience",
-        eyebrow: "Connected Experience",
-        title: "One ecosystem, multiple touchpoints.",
-        body:
-          "Whether users begin on their phone or the machine itself, recipes, brewing progress, and saved drinks stay connected across mobile and hardware.",
-        visualLabel: "Phone, machine, and coffee ecosystem flow",
       },
       {
         id: "reflection",
         eyebrow: "Reflection",
         title: "Making power feel approachable.",
         body:
-          "Designing this project was not about adding more features. It was about making a powerful coffee experience feel approachable. Balancing simplicity for everyday users with flexibility for enthusiasts became the guiding principle throughout the project.",
+          "This was my first time designing an interaction experience that connected hardware, software, and a non-standard display. The process pushed me to think carefully about the limitations of the machine and screen while making each touchpoint feel understandable, useful, and easy to operate for users. It also strengthened my ability to communicate across teams, translating product goals, hardware constraints, and engineering requirements into a cohesive user experience.",
         visualLabel: "Reflection and future opportunities",
+        hideVisual: true,
       },
     ],
     story: {
@@ -320,8 +374,8 @@ export const projects: Project[] = [
         body:
           "Creating a database collection required users to understand multiple technical concepts at once, including schema, index, partition, and optimization settings. In the previous flow, configuration items were complex and scattered, which increased cognitive load and made it easier for users to feel uncertain or make mistakes before they could successfully create a collection.",
         visualLabel: "Before create collection",
-        visualSrc: "/work/zilliz-before.png",
-        compactVisual: true,
+        visualSrc: "/work/zilliz-challenge-before.png",
+        full: true,
       },
       {
         id: "research",
@@ -355,36 +409,17 @@ export const projects: Project[] = [
       {
         id: "flow",
         eyebrow: "Final Flow",
-        title: "Step 1: start with the minimum setup.",
+        title: "A simpler path from setup to creation.",
         body:
-          "The redesign begins by asking users to complete only the information required to create a collection. Basic collection details are separated from schema and optimization decisions, so users can enter the flow without immediately facing every advanced database concept.",
+          "The final flow breaks collection creation into a clearer sequence. Instead of asking users to process every technical setting at once, the redesign starts with the minimum setup, then guides users into schema creation and optimization only when each decision becomes relevant.",
         points: [
-          "Enter basic collection information first.",
-          "Keep advanced setup collapsed until it becomes relevant.",
-          "Let users progress before asking them to make deeper technical choices.",
+          "Basic setup: enter collection information first and keep advanced decisions out of the initial step.",
+          "Create schema: use a clearer two-column structure and move detailed configuration into setting icons.",
+          "Optimization: introduce recommended defaults and contextual explanations for index, partition, mmap, shard, and consistency choices.",
         ],
-        visualLabel: "Create collection first step",
-        visualSrc: "/work/zilliz-create-collection-step1.png",
-        full: true,
-      },
-      {
-        id: "schema",
-        eyebrow: "Create Schema",
-        title: "Making technical structure easier to scan and edit.",
-        body:
-          "The schema experience was redesigned around a clearer two-column structure for field names and field types. Advanced controls were moved into setting icons, reducing visual noise while keeping detailed configuration available. Dynamic field and add-field actions were made more visible so users could understand the structure of a collection without reading a dense table.",
-        visualLabel: "Create schema interface",
-        visualSrc: "/work/zilliz-create-collection.png",
-        full: true,
-      },
-      {
-        id: "optimization",
-        eyebrow: "Optimization Settings",
-        title: "Using defaults and explanations to reduce setup anxiety.",
-        body:
-          "Optimization settings were treated as a guided advanced layer instead of a required wall of configuration. Recommended defaults, grouped controls, and inline explanations helped users understand index, partition, mmap, shard, and consistency choices without forcing them to configure everything manually on first use.",
-        visualLabel: "Optimization settings",
-        visualSrc: "/work/zilliz-optimize.png",
+        visualLabel: "Create collection final flow",
+        visualSrc: "/work/zilliz-final-flow.mov",
+        variant: "step-flow",
         full: true,
       },
       {
@@ -439,40 +474,6 @@ export const projects: Project[] = [
         "The experience is designed to reduce cognitive load while preserving the precision expected from a database product.",
       reflection:
         "Developer tools become more trustworthy when the interface explains why a decision matters, not just what fields are required.",
-    },
-  },
-  {
-    slug: "coming-soon",
-    title: "Coming Soon",
-    eyebrow: "Project 04",
-    year: "2026",
-    category: "Editorial Placeholder",
-    summary: "New case study currently in progress.",
-    cover: "/work/coming-soon.png",
-    heroTone: "from-white to-neutral-50",
-    role: "Product Designer",
-    timeline: "In progress",
-    team: "TBD",
-    platform: "TBD",
-    responsibilities: ["Research", "Product thinking", "Interaction model"],
-    story: {
-      overview:
-        "A new case study is being shaped with the same storytelling framework: context, problem, research, solution, system, and reflection.",
-      context:
-        "The placeholder is intentionally editorial rather than empty, signaling that the portfolio is active while keeping the page polished.",
-      problem:
-        "A portfolio should make unfinished work feel intentional, not forgotten.",
-      goals: ["Frame the upcoming work", "Maintain visual rhythm", "Avoid a dead end"],
-      research: ["Project notes are currently being organized"],
-      architecture: "The full structure will follow the portfolio case-study model.",
-      flow: "The narrative will move from discovery to launch once the project is ready.",
-      wireframes: "Exploration is in progress.",
-      exploration: "Visual directions are being reviewed.",
-      solution: "The final solution will be published when the case study is complete.",
-      interaction: "Interaction details will be documented alongside the final product.",
-      system: ["Tokens", "Components", "Responsive rules"],
-      outcome: "New case study currently in progress.",
-      reflection: "Good work deserves enough space to be told properly.",
     },
   },
 ];
