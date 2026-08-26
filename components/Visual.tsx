@@ -3,14 +3,17 @@ import Image from "next/image";
 type VisualProps = {
   src?: string;
   label: string;
-  aspect?: "wide" | "tall" | "square" | "hero";
+  aspect?: "wide" | "tall" | "square" | "hero" | "banner";
   dark?: boolean;
 };
 
 export function Visual({ src, label, aspect = "wide", dark = false }: VisualProps) {
+  const isVideo = src ? /\.(mov|mp4|webm)$/i.test(src) : false;
   const ratio =
     aspect === "hero"
       ? "aspect-[16/9]"
+      : aspect === "banner"
+        ? "aspect-[16/7]"
       : aspect === "tall"
         ? "aspect-[4/5]"
         : aspect === "square"
@@ -23,7 +26,17 @@ export function Visual({ src, label, aspect = "wide", dark = false }: VisualProp
         dark ? "bg-ink text-white" : "bg-[#F7F7F5] text-ink"
       }`}
     >
-      {src ? (
+      {src && isVideo ? (
+        <video
+          src={src}
+          className="h-full w-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls
+        />
+      ) : src ? (
         <Image
           src={src}
           alt={label}

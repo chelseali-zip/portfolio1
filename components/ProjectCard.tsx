@@ -13,12 +13,13 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10% 0px" }}
       transition={{ duration: 0.65, delay: index * 0.06, ease: [0.65, 0, 0.35, 1] }}
-      className={`grid gap-10 border-t border-line py-20 md:grid-cols-12 md:items-center md:gap-16 md:py-28 ${
+      className={`grid gap-8 border-t border-line py-12 md:grid-cols-12 md:items-center md:gap-16 md:py-28 ${
         index % 2 ? "" : "md:[&_.image-col]:order-2"
       }`}
     >
       <Link
         href={`/work/${project.slug}`}
+        scroll
         className="image-col group relative block aspect-[16/11] overflow-hidden rounded-[28px] bg-neutral-100 md:col-span-7"
         aria-label={`Open ${project.title} case study`}
       >
@@ -34,7 +35,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <p className="mb-6 text-xs font-semibold uppercase tracking-[.2em] text-muted">
           {project.eyebrow} / {project.year}
         </p>
-        <Link href={`/work/${project.slug}`} className="group inline-flex items-start gap-4">
+        <Link href={`/work/${project.slug}`} scroll className="group inline-flex items-start gap-4">
           <h3 className="max-w-xl text-4xl font-semibold leading-[.98] tracking-[-.03em] md:text-6xl">
             {project.title}
           </h3>
