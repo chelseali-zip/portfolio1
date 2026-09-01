@@ -13,7 +13,7 @@ const rotatingTitles = ["Product Designer", "Visual Designer", "UX Designer"];
 const homeProjects = [
   "smart-coffee-ecosystem",
   "zilliz-cloud",
-  "k12-education-platform",
+  "pfizer-design-system",
 ]
   .map((slug) => projects.find((project) => project.slug === slug))
   .filter((project): project is (typeof projects)[number] => Boolean(project));

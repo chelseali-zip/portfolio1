@@ -7,7 +7,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return projects
+    .filter((project) => project.available !== false)
+    .map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -22,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = getProject(slug);
-  if (!project) notFound();
+  if (!project || project.available === false) notFound();
 
   const responsibilities = project.responsibilities.join(" / ");
   const sections = project.caseSections ?? [
